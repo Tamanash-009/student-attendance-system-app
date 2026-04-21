@@ -11,7 +11,7 @@ export const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // Temp bypass for dev
+  const [isAuthenticated] = useState(true); // Temp bypass for dev
 
   const handleVoiceCommand = (text: string) => {
     alert(`Voice Command Recognized: "${text}"\n\n(Integration logic to match routes/api goes here)`);
@@ -20,7 +20,7 @@ export const Layout = () => {
   const { isListening, startListening } = useVoiceCommand(handleVoiceCommand);
 
   useEffect(() => {
-    authService.isAuthenticated().then(auth => {
+    authService.isAuthenticated().then(() => {
       // setIsAuthenticated(auth);
       // if (!auth) {
       //  navigate('/login');
